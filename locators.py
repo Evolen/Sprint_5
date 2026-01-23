@@ -18,9 +18,16 @@ class Locators:
     RECOVERY_PASS = (By.XPATH, ".//*[text() = 'Восстановить пароль']") #Кнопка "Восстановить пароль" от акаунта 
     RECOVERY_PASS_LOGIN = (By.XPATH, ".//*[text() = 'Войти']") #Кнопка Войти в аккаунт на сранице смены пароля 
     CONSTRUCTOR = (By.XPATH, ".//*[text() = 'Конструктор']") #Переход на страницу Конструктор
+    CONSTRUCTOR_CHECK = (By.XPATH, ".//*[@class = 'text text_type_main-large mb-5 mt-10']") #Проверка перехода на вкладку "Конструктор" из личного кабинета
     LOGO = (By.XPATH, ".//*[@class = 'AppHeader_header__logo__2D0X2']") #Переход на страницу "Конструктор" через лого Stellar Burgers
-    EXIT = (By.XPATH, ".//*[@class = 'Account_button__14Yp3 text text_type_main-medium text_color_inactive']") #Кнопка выхода из аккаунта
-    BUN = (By.XPATH, ".//*[text() = 'Булки']") #Переход в раздел Булки
-    SAUCES = (By.XPATH, ".//*[text() = 'Соусы']") #Переход в раздел Соусы
-    FILLINGS = (By.XPATH, ".//*[text() = 'Начинки']") #Переход в раздел Начинки
+    EXIT_BUTTON = (By.XPATH, ".//*[text() = 'Выход']") #Кнопка выхода из аккаунта
+    BUN = (By.XPATH, ".//span[text() = 'Булки']") #Переход в раздел Булки
+    SAUCES = (By.XPATH, ".//span[text() = 'Соусы']") #Переход в раздел Соусы
+    FILLINGS = (By.XPATH, ".//span[text() = 'Начинки']") #Переход в раздел Начинки
+    CHECK_FORM_ENTRANCE = (By.XPATH, ".//*[text() = 'Вход']")#Проверка формы входа
+    SAUCES_CHOICE = (By.XPATH, ".//h2[text() = 'Соусы']")
+    BUN_CHOICE = (By.XPATH, ".//h2[text() = 'Булки']") 
+    FILLINGS_CHOICE = (By.XPATH, ".//h2[text() = 'Начинки']")
+    
+    
     

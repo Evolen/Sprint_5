@@ -9,11 +9,14 @@ import pytest
 
 #Проверка регистрации      
 class TestRegistration:
-    def test_registration(self, driver,login_registration):
-
-        assert login_registration == True 
-        #WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//*[text() = 'Вход']")))
-        driver.quit()       
+    def test_registration(self, driver,login_registration, ):
+        (email, password) = login_registration
+        driver.find_element(*Locators.EMAIL).send_keys(email)          
+        driver.find_element(*Locators.PASSWORD_LOGIN).send_keys(password)        
+        driver.find_element(*Locators.LOGIN_BUTTON_FINALLY).click() 
+        login_check = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(Locators.BUTTON_ORDER)).text   
+        assert login_check == "Оформить заказ"
+              
 
 #Проверка ошибки для неккоректного пароля 
 class TestRegistrationFail:
@@ -27,8 +30,9 @@ class TestRegistrationFail:
         driver.find_element(*Locators.PASSWORD).send_keys("12345")
         driver.find_element(*Locators.REG_BUTTON_FINALE).click()
         error = driver.find_element(*Locators.PASSWORD_ERROR).text
-        assert error == "Некорректный пароль"
-        driver.quit() 
+        assert error == 'Некорректный пароль'
+        
+         
         
         
 

@@ -6,19 +6,26 @@ from locators import Locators
 from selenium.webdriver.common.by import By
 import pytest
 
-#Проверка перехода на вкладку "Консруктор" из личного кабинета
+#Проверка перехода на вкладку "Конструктор" из личного кабинета
 class TestConstructor:
     def test_constructor(self, driver, login_home_page):
-        assert login_home_page == True
+        
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
         driver.find_element(*Locators.CONSTRUCTOR).click()        
-             
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH, ".//*[text() = 'Оформить заказ']")))        
-        driver.quit() 
+        
+        reg_text = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_CHECK)).text 
+        assert reg_text == 'Соберите бургер'      
+        
+        
+        
 #Проверка перехода на вкладку "Консруктор" через логотип Stellar Burgers из личного кабинета
     def test_logo(self, driver, login_home_page):
-        assert login_home_page == True
+        
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()         
         driver.find_element(*Locators.LOGO).click()              
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH, ".//*[text() = 'Оформить заказ']")))
-        driver.quit() 
+        driver.find_elements(*Locators.CONSTRUCTOR_CHECK)
+        
+        reg_text = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.CONSTRUCTOR_CHECK)).text 
+        assert reg_text == 'Соберите бургер'
+        
+        

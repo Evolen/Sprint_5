@@ -10,7 +10,7 @@ import pytest
 #Проверка перехода в личный кабинет
 class TestPersonalAccaunt:
     def test_personal_acc(self, driver, login_home_page):
-        assert login_home_page == True
-        driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
-        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//*[text() = 'Профиль']"))) 
-        driver.quit() 
+        
+        driver.find_element(*Locators.PERSONAL_ACCOUNT).click()       
+        personal_acc = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(Locators.EXIT_BUTTON)).text 
+        assert personal_acc == 'Выход' 

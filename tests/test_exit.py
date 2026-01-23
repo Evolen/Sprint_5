@@ -9,8 +9,10 @@ import pytest
 #Проверка выхода
 class TestExit:
     def test_exit(self, driver,login_home_page):
-        assert login_home_page == True  
+         
         driver.find_element(*Locators.PERSONAL_ACCOUNT).click()
-        driver.find_element(*Locators.EXIT).click()
-        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//*[text() = 'Вход']"))) 
-        #driver.quit()
+        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(Locators.EXIT_BUTTON))
+        driver.find_element(*Locators.EXIT_BUTTON).click()
+        exit_check = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(Locators.CHECK_FORM_ENTRANCE)).text
+        assert exit_check == "Вход"
+        
